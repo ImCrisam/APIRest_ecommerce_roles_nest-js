@@ -1,0 +1,55 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/postgres
+{
+	"name": "APIRest_ecommerce_roles_nest-js",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "nest-dev",
+	"workspaceFolder": "/workspaces",
+	"postCreateCommand": "bash .devcontainer/terminal_zsh.sh",
+	// "postStartCommand": "",
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"material-icon-theme.activeIconPack": "nest",
+				"workbench.colorTheme": "Visual Studio Dark",
+				"terminal.integrated.defaultProfile.linux": "zsh",
+				"terminal.integrated.profiles.linux": {
+					"zsh": {
+						"path": "/bin/zsh"
+					}
+				}
+			},
+			"extensions": [
+				"PKief.material-icon-theme",
+				"streetsidesoftware.code-spell-checker",
+				"chrisvltn.log-wrapper-for-vscode",
+
+				"ms-azuretools.vscode-containers",
+				"eamodio.gitlens",
+				"jeff-hykin.better-dockerfile-syntax",
+				"redhat.vscode-yaml",
+				"imgildev.vscode-json-flow",
+
+				// Typescript
+				"pmneo.tsimporter",
+				"yoavbls.pretty-ts-errors",
+
+				// nest
+				"imgildev.vscode-nestjs-snippets-extension",
+				"imgildev.vscode-nestjs-typeorm-snippets",
+				"imgildev.vscode-nestjs-swagger-snippets",
+				"imgildev.vscode-nestjs-generator",
+
+			]
+		}
+	},
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// This can be used to network with other containers or the host.
+	"forwardPorts": [5432]
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "pip install --user -r requirements.txt",
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
