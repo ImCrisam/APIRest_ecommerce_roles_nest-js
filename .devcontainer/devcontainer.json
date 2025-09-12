@@ -10,7 +10,9 @@
 	"customizations": {
 		"vscode": {
 			"settings": {
+				"material-icon-theme.folders.theme": "specific",
 				"material-icon-theme.activeIconPack": "nest",
+				"typescript.tsserver.watchOptions": "vscode",
 				"workbench.colorTheme": "Visual Studio Dark",
 				"terminal.integrated.defaultProfile.linux": "zsh",
 				"terminal.integrated.profiles.linux": {
@@ -20,16 +22,6 @@
 				}
 			},
 			"extensions": [
-				"PKief.material-icon-theme",
-				"streetsidesoftware.code-spell-checker",
-				"chrisvltn.log-wrapper-for-vscode",
-
-				"ms-azuretools.vscode-containers",
-				"eamodio.gitlens",
-				"jeff-hykin.better-dockerfile-syntax",
-				"redhat.vscode-yaml",
-				"imgildev.vscode-json-flow",
-
 				// Typescript
 				"pmneo.tsimporter",
 				"yoavbls.pretty-ts-errors",
@@ -39,6 +31,15 @@
 				"imgildev.vscode-nestjs-typeorm-snippets",
 				"imgildev.vscode-nestjs-swagger-snippets",
 				"imgildev.vscode-nestjs-generator",
+
+				"PKief.material-icon-theme",
+				"streetsidesoftware.code-spell-checker",
+				"chrisvltn.log-wrapper-for-vscode",
+				"ms-azuretools.vscode-containers",
+				"eamodio.gitlens",
+				"jeff-hykin.better-dockerfile-syntax",
+				"redhat.vscode-yaml",
+				"imgildev.vscode-json-flow"
 
 			]
 		}
