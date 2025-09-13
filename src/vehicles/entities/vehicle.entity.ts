@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import {
   Column,
   CreateDateColumn,
@@ -15,6 +16,10 @@ export class Vehicle {
   @Column()
   model: string; // Modelo (ej: Corolla)
 
+  @ApiProperty({
+    description: 'description',
+    example: 200
+  })
   @Column()
   year: number;
 
