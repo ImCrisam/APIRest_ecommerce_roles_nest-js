@@ -5,33 +5,32 @@
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "nest-dev",
 	"workspaceFolder": "/workspaces",
-	"postCreateCommand": "bash .devcontainer/terminal_zsh.sh",
-	// "postStartCommand": "",
+	// "postCreateCommand": " ",
+	// "postAttachCommand": "code --command workbench.action.reloadWindow",
+	"postStartCommand": "",
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {},
+		"ghcr.io/devcontainers-extra/features/nestjs-cli:2": {},
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	},
 	"customizations": {
 		"vscode": {
 			"settings": {
-				"material-icon-theme.folders.theme": "specific",
+				"material-icon-theme.folders.theme": "classic",
 				"material-icon-theme.activeIconPack": "nest",
 				"typescript.tsserver.watchOptions": "vscode",
 				"workbench.colorTheme": "Visual Studio Dark",
-				"terminal.integrated.defaultProfile.linux": "zsh",
-				"terminal.integrated.profiles.linux": {
-					"zsh": {
-						"path": "/bin/zsh"
-					}
-				}
 			},
 			"extensions": [
 				// Typescript
 				"pmneo.tsimporter",
 				"yoavbls.pretty-ts-errors",
-
 				// nest
 				"imgildev.vscode-nestjs-snippets-extension",
 				"imgildev.vscode-nestjs-typeorm-snippets",
 				"imgildev.vscode-nestjs-swagger-snippets",
 				"imgildev.vscode-nestjs-generator",
-
 				"PKief.material-icon-theme",
 				"streetsidesoftware.code-spell-checker",
 				"chrisvltn.log-wrapper-for-vscode",
@@ -40,15 +39,15 @@
 				"jeff-hykin.better-dockerfile-syntax",
 				"redhat.vscode-yaml",
 				"imgildev.vscode-json-flow"
-
 			]
 		}
 	},
 	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// This can be used to network with other containers or the host.
-	"forwardPorts": [5432]
+	"forwardPorts": [
+		5432
+	]
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "pip install --user -r requirements.txt",
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
