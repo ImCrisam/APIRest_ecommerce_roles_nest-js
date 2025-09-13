@@ -12,11 +12,10 @@
 		"ghcr.io/devcontainers/features/common-utils:2": {},
 		"ghcr.io/devcontainers-extra/features/nestjs-cli:2": {},
 		"ghcr.io/devcontainers/features/git:1": {},
-		"ghcr.io/devcontainers/features/github-cli:1": {}
+		"ghcr.io/devcontainers/features/github-cli:1": {},
 	},
 	"customizations": {
 		"vscode": {
-			
 			"extensions": [
 				// Typescript
 				"pmneo.tsimporter",
@@ -26,10 +25,8 @@
 				"imgildev.vscode-nestjs-typeorm-snippets",
 				"imgildev.vscode-nestjs-swagger-snippets",
 				"imgildev.vscode-nestjs-generator",
-				//design
-				"esbenp.prettier-vscode",
+				//-
 				"PKief.material-icon-theme",
-				//
 				"christian-kohler.npm-intellisense",
 				"streetsidesoftware.code-spell-checker",
 				"chrisvltn.log-wrapper-for-vscode",
@@ -37,14 +34,16 @@
 				"eamodio.gitlens",
 				"redhat.vscode-yaml",
 				"jeff-hykin.better-dockerfile-syntax",
-				"imgildev.vscode-json-flow"
+				"imgildev.vscode-json-flow",
+				"esbenp.prettier-vscode"
 			],
 			"settings": {
 				"workbench.iconTheme": "material-icon-theme",
 				"material-icon-theme.folders.theme": "specific",
 				"material-icon-theme.activeIconPack": "nest",
 				"typescript.tsserver.watchOptions": "vscode",
-				"workbench.colorTheme": "Visual Studio Dark"
+				"workbench.colorTheme": "Default Dark Modern",
+				"editor.defaultFormatter": "esbenp.prettier-vscode"
 			}
 		}
 	},
