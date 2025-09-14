@@ -28,11 +28,14 @@ export class VehiclesService {
     return vehicle;
   }
 
-  update(id: string, updateVehicleDto: UpdateVehicleDto) {
-    return `This action updates a #${id} vehicle`;
+  async update(id: string, updateVehicleDto: UpdateVehicleDto) {
+    const vehicle = await this.findOne(id); // asegura que existe
+    Object.assign(vehicle, updateVehicleDto);
+    return this.vehicleRepo.save(vehicle);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} vehicle`;
+  async remove(id: string) {
+    const vehicle = await this.findOne(id); // asegura que existe
+    return this.vehicleRepo.remove(vehicle);
   }
 }

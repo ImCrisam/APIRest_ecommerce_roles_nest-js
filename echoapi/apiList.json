@@ -756,7 +756,7 @@
       "body": {
         "mode": "json",
         "parameter": [],
-        "raw": "{\r\n  \"make\": \"{{$fakerjs.Vehicle.manufacturer}}\",\r\n  \"model\": \"{{$fakerjs.Vehicle.model}}\",\r\n  \"year\": {{$fakerjs.Date.between(from=1999-01-01T00:00:00-05:00,to=2025-09-14T00:00:00-05:00)|format(YYYY,--5:00)}}\r\n}",
+        "raw": "{\r\n  \"make\": \"{{$fakerjs.Vehicle.manufacturer}}\",\r\n  \"model\": \"{{$fakerjs.Vehicle.model}}\",\r\n  \"year\": {{$fakerjs.Date.between(from=1999-01-01T00:00:00-05:00,to=2020-09-14T00:00:00-05:00)|format(YYYY,--5:00)}}\r\n}",
         "raw_parameter": [],
         "raw_schema": {
           "type": "object"
@@ -869,7 +869,7 @@
     "target_id": "6a8f258b8c007",
     "parent_id": "6a7d19bbb8006",
     "target_type": "api",
-    "name": "Create Vehicle Copy",
+    "name": "update Vehicle",
     "sort": 5,
     "version": 0,
     "mark_id": "",
@@ -1005,7 +1005,7 @@
       "body": {
         "mode": "json",
         "parameter": [],
-        "raw": "{\r\n  \"make\": \"Toyota\",\r\n  \"model\": \"{{$fakerjs.Vehicle.model}}\",\r\n  \"year\": 2022\r\n}",
+        "raw": "{\r\n  \"year\": {{$fakerjs.Date.between(from=2020-01-01T00:00:00-05:00,to=2025-09-14T00:00:00-05:00)|format(YYYY,--5:00)}}\r\n}",
         "raw_parameter": [],
         "raw_schema": {
           "type": "object"

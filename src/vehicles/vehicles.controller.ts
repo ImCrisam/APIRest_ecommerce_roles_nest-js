@@ -36,6 +36,10 @@ export class VehiclesController {
   }
 
   @Get()
+    @ApiResponse({ 
+    status: 200,
+    type:[Vehicle]
+  })
   @ApiOperation({ summary: 'Get all vehicles' })
   @ApiResponse({ status: 200, description: 'List of vehicles.' })
   findAll() {
@@ -44,11 +48,11 @@ export class VehiclesController {
 
   @Get(':id')
   @ApiOperation({ summary: 'Get a vehicle by ID' })
-  @ApiParam({ name: 'id', description: 'Vehicle ID', example: 4774 })
-  @ApiResponse({ status: 200, description: 'Vehicle found.' })
+  @ApiParam({ name: 'id', description: 'Vehicle ID', example: "d8f619d2-43ff-433f-8245-3e5083747134" })
+  @ApiResponse({ status: 200, type:Vehicle })
   @ApiProperty({
     description: 'description',
-    example: '4774',
+    example: 'd8f619d2-43ff-433f-8245-3e5083747134',
   })
   findOne(@Param('id') id: string) {
     return this.vehiclesService.findOne(id);
@@ -56,18 +60,18 @@ export class VehiclesController {
 
   @Patch(':id')
   @ApiOperation({ summary: 'Update a vehicle by ID' })
-  @ApiParam({ name: 'id', description: 'Vehicle ID', example: 4774 })
+  @ApiParam({ name: 'id', example: "d8f619d2-43ff-433f-8245-3e5083747134" })
   @ApiBody({ type: UpdateVehicleDto })
-  @ApiResponse({ status: 200, description: 'Vehicle updated successfully.' })
+  @ApiResponse({ status: 200, type:Vehicle })
   update(@Param('id') id: string, @Body() updateVehicleDto: UpdateVehicleDto) {
     return this.vehiclesService.update(id, updateVehicleDto);
   }
 
   @Delete(':id')
   @ApiOperation({ summary: 'Remove a vehicle by ID' })
-  @ApiParam({ name: 'id', description: 'Vehicle ID', example: 4774 })
-  @ApiResponse({ status: 200, description: 'Vehicle removed successfully.' })
+  @ApiParam({ name: 'id', example: "d8f619d2-43ff-433f-8245-3e5083747134" })
+  @ApiResponse({ status: 200, type:Vehicle })
   remove(@Param('id') id: string) {
-    return this.vehiclesService.remove(+id);
+    return this.vehiclesService.remove(id);
   }
 }
