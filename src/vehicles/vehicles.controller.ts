@@ -60,7 +60,7 @@ export class VehiclesController {
   @ApiBody({ type: UpdateVehicleDto })
   @ApiResponse({ status: 200, description: 'Vehicle updated successfully.' })
   update(@Param('id') id: string, @Body() updateVehicleDto: UpdateVehicleDto) {
-    return this.vehiclesService.update(+id, updateVehicleDto);
+    return this.vehiclesService.update(id, updateVehicleDto);
   }
 
   @Delete(':id')

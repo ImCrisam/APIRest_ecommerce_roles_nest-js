@@ -28,7 +28,7 @@ export class VehiclesService {
     return vehicle;
   }
 
-  update(id: number, updateVehicleDto: UpdateVehicleDto) {
+  update(id: string, updateVehicleDto: UpdateVehicleDto) {
     return `This action updates a #${id} vehicle`;
   }
 
