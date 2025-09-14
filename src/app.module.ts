@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { VehiclesModule } from './vehicles/vehicles.module';
 import { Vehicle } from './vehicles/entities/vehicle.entity';
+import { UserModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { Vehicle } from './vehicles/entities/vehicle.entity';
       autoLoadEntities: true,
       synchronize: process.env.NODE_ENV == "development" || false, // solo para desarrollo
     }),
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
