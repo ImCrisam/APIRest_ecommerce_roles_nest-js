@@ -17,6 +17,7 @@ import {
   ApiProperty,
   ApiResponse,
 } from '@nestjs/swagger';
+import { Vehicle } from './entities/vehicle.entity';
 
 @Controller('vehicles')
 export class VehiclesController {
@@ -25,7 +26,11 @@ export class VehiclesController {
   @Post()
   @ApiOperation({ summary: 'Create a new vehicle' })
   @ApiBody({ type: CreateVehicleDto })
-  @ApiResponse({ status: 201, description: 'Vehicle created successfully.' })
+  @ApiResponse({ 
+    status: 201,
+    description: 'Vehicle created successfully.',
+    type:Vehicle
+  })
   create(@Body() createVehicleDto: CreateVehicleDto) {
     return this.vehiclesService.create(createVehicleDto);
   }

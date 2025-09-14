@@ -5,10 +5,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ..:/workspaces:cached
-
-    ports:
-      - "${APP_PORT}:3000"
-      
+     
     command: sleep infinity
 
   nest-dev-postgres:
