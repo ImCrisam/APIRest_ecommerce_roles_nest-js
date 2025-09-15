@@ -14,13 +14,23 @@
           "is_default": 1
         }
       ],
-      "env_var_list": {
-        "id": {
-          "current_value": "07741639-6494-4ff5-b3ae-a8f8f8b3f86b",
-          "value": "",
-          "description": ""
+      "env_var_list": {}
+    },
+    {
+      "env_id": "6e6ac02fb8006",
+      "name": "New Environment",
+      "is_private": -1,
+      "server_list": [
+        {
+          "name": "Default Services",
+          "server_id": "1",
+          "uri": "",
+          "sort": 1,
+          "is_default": 1
         }
-      }
+      ],
+      "env_var_list": {},
+      "isLocal": true
     }
   ],
   "envDetailKeys": "1",
@@ -35,8 +45,13 @@
   ],
   "globalVars": {
     "baseUrl": {
-      "current_value": "http://localhost:3000/api",
       "value": "http://localhost:3000/api",
+      "current_value": "http://localhost:3000/api",
+      "description": ""
+    },
+    "id": {
+      "value": "",
+      "current_value": "",
       "description": ""
     }
   },

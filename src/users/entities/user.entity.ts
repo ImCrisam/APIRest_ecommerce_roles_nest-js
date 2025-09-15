@@ -1,4 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { Exclude } from "class-transformer";
 import { PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, Entity } from "typeorm";
 
 export enum UserRole {
@@ -12,7 +13,7 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ApiProperty({ example: 'Cristian' })
+  @ApiProperty({ example: 'Andres' })
   @Column()
   firstName: string;
 
@@ -24,7 +25,9 @@ export class User {
   @Column({ unique: true })
   email: string;
 
+
   @ApiProperty({ example: 'hashedpassword123' })
+  @Exclude()
   @Column()
   password: string;
 
