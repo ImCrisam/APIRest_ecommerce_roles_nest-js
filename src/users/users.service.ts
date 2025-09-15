@@ -1,4 +1,9 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -13,8 +18,12 @@ export class UsersService {
   ) {}
 
   create(dto: CreateUserDto) {
-    const user = this.usersRepo.create(dto);
-    return this.usersRepo.save(user);
+    try {
+      const user = this.usersRepo.create(dto);
+      return this.usersRepo.save(user);
+    } catch (error) {
+      this.handleDBError(error)
+    }
   }
 
   findAll() {
@@ -36,5 +45,20 @@ export class UsersService {
   async remove(id: string) {
     const user = await this.findOne(id);
     return this.usersRepo.remove(user);
+  }
+
+  private handleDBError(error: any): never {
+    if ((error.code = '23505')) throw new BadRequestException(error.detail);
+
+    if (
+      error instanceof BadRequestException ||
+      error instanceof NotFoundException ||
+      error instanceof InternalServerErrorException
+    ) {
+      throw error;
+    }
+    throw new InternalServerErrorException(
+      error?.message || 'Unexpected error',
+    );
   }
 }

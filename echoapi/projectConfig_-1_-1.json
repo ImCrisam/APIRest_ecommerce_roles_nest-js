@@ -45,13 +45,13 @@
   ],
   "globalVars": {
     "baseUrl": {
-      "value": "http://localhost:3000/api",
       "current_value": "http://localhost:3000/api",
+      "value": "http://localhost:3000/api",
       "description": ""
     },
     "id": {
-      "value": "",
       "current_value": "",
+      "value": "",
       "description": ""
     }
   },

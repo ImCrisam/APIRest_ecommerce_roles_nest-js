@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { VehiclesService } from './vehicles.service';
 import { CreateVehicleDto } from './dto/create-vehicle.dto';
@@ -18,6 +19,7 @@ import {
   ApiResponse,
 } from '@nestjs/swagger';
 import { Vehicle } from './entities/vehicle.entity';
+import { PaginationDto } from '../common/dtos/pagination.dto';
 
 @Controller('vehicles')
 export class VehiclesController {
@@ -42,8 +44,8 @@ export class VehiclesController {
   })
   @ApiOperation({ summary: 'Get all vehicles' })
   @ApiResponse({ status: 200, description: 'List of vehicles.' })
-  findAll() {
-    return this.vehiclesService.findAll();
+  findAll(@Query() paginationDto:PaginationDto) {
+    return this.vehiclesService.findAll(paginationDto);
   }
 
   @Get(':id')

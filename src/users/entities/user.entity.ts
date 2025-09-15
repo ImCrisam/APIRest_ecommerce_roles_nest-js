@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Exclude } from "class-transformer";
-import { PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, Entity } from "typeorm";
+import { PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, Entity, BeforeInsert, BeforeUpdate } from "typeorm";
 
 export enum UserRole {
   CLIENT = 'cliente',
@@ -42,4 +42,18 @@ export class User {
   @ApiProperty({ example: '2025-09-13T21:42:24.905Z' })
   @UpdateDateColumn()
   updatedAt: Date;
+
+
+  @BeforeInsert()
+  async hashPasswordBeforeInsert() {
+    // this.password = await bcrypt.hash(this.password, 10);
+  }
+
+  @BeforeUpdate()
+  async hashPasswordBeforeUpdate() {
+    // Solo volver a hashear si cambió
+    if (this.password) {
+      // this.password = await bcrypt.hash(this.password, 10);
+    }
+  }
 }

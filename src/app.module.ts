@@ -4,8 +4,8 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { VehiclesModule } from './vehicles/vehicles.module';
-import { Vehicle } from './vehicles/entities/vehicle.entity';
 import { UserModule } from './users/users.module';
+import { CommonModule } from './common/common.module';
 
 @Module({
   imports: [
@@ -23,6 +23,7 @@ import { UserModule } from './users/users.module';
       synchronize: process.env.NODE_ENV == "development" || false, // solo para desarrollo
     }),
     UserModule,
+    CommonModule,
   ],
   controllers: [AppController],
   providers: [AppService],

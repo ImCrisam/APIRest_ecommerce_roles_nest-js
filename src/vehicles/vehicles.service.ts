@@ -4,11 +4,11 @@ import { UpdateVehicleDto } from './dto/update-vehicle.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Vehicle } from './entities/vehicle.entity';
 import { Repository } from 'typeorm';
+import { PaginationDto } from '../common/dtos/pagination.dto';
 
 @Injectable()
 export class VehiclesService {
-
-   constructor(
+  constructor(
     @InjectRepository(Vehicle)
     private readonly vehicleRepo: Repository<Vehicle>,
   ) {}
@@ -18,8 +18,12 @@ export class VehiclesService {
     return this.vehicleRepo.save(vehicle);
   }
 
-  findAll() {
-    return this.vehicleRepo.find();
+  findAll(paginationDto: PaginationDto) {
+    const { limit=10, offset=0 } = paginationDto;
+    return this.vehicleRepo.find({
+      take:limit,
+      skip:offset
+    });
   }
 
   async findOne(id: string) {
