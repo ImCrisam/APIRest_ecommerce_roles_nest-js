@@ -1,8 +1,10 @@
-import { Controller, Post, Body, Get, Param, Patch, Delete } from "@nestjs/common";
+import { Controller, Post, Body, Get, Param, Patch, Delete, Query } from "@nestjs/common";
 import { ApiTags, ApiOperation, ApiResponse } from "@nestjs/swagger";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { UsersService } from "./users.service";
+import { IdParamDto } from "../common/dtos/idParam.dto";
+import { PaginationDto } from "../common/dtos/pagination.dto";
 
 @ApiTags('Users')
 @Controller('users')
@@ -18,25 +20,25 @@ export class UsersController {
 
   @Get()
   @ApiOperation({ summary: 'Get all users' })
-  findAll() {
-    return this.usersService.findAll();
+  findAll(@Query() paginationDto:PaginationDto) {
+    return this.usersService.findAll(paginationDto);
   }
 
   @Get(':id')
   @ApiOperation({ summary: 'Get user by ID' })
-  findOne(@Param('id') id: string) {
-    return this.usersService.findOne(id);
+  findOne(@Param() params: IdParamDto) {
+    return this.usersService.findOne(params.id);
   }
 
   @Patch(':id')
   @ApiOperation({ summary: 'Update user by ID' })
-  update(@Param('id') id: string, @Body() dto: UpdateUserDto) {
-    return this.usersService.update(id, dto);
+  update(@Param() params: IdParamDto, @Body() dto: UpdateUserDto) {
+    return this.usersService.update(params.id, dto);
   }
 
   @Delete(':id')
   @ApiOperation({ summary: 'Delete user by ID' })
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(id);
+  remove(@Param() params: IdParamDto) {
+    return this.usersService.remove(params.id);
   }
 }

@@ -20,6 +20,7 @@ import {
 } from '@nestjs/swagger';
 import { Vehicle } from './entities/vehicle.entity';
 import { PaginationDto } from '../common/dtos/pagination.dto';
+import { IdParamDto } from '../common/dtos/idParam.dto';
 
 @Controller('vehicles')
 export class VehiclesController {
@@ -56,8 +57,8 @@ export class VehiclesController {
     description: 'description',
     example: 'd8f619d2-43ff-433f-8245-3e5083747134',
   })
-  findOne(@Param('id') id: string) {
-    return this.vehiclesService.findOne(id);
+  findOne(@Param() params: IdParamDto) {
+    return this.vehiclesService.findOne(params.id);
   }
 
   @Patch(':id')
@@ -65,15 +66,15 @@ export class VehiclesController {
   @ApiParam({ name: 'id', example: "d8f619d2-43ff-433f-8245-3e5083747134" })
   @ApiBody({ type: UpdateVehicleDto })
   @ApiResponse({ status: 200, type:Vehicle })
-  update(@Param('id') id: string, @Body() updateVehicleDto: UpdateVehicleDto) {
-    return this.vehiclesService.update(id, updateVehicleDto);
+  update(@Param() params: IdParamDto, @Body() updateVehicleDto: UpdateVehicleDto) {
+    return this.vehiclesService.update(params.id, updateVehicleDto);
   }
 
   @Delete(':id')
   @ApiOperation({ summary: 'Remove a vehicle by ID' })
   @ApiParam({ name: 'id', example: "d8f619d2-43ff-433f-8245-3e5083747134" })
   @ApiResponse({ status: 200, type:Vehicle })
-  remove(@Param('id') id: string) {
-    return this.vehiclesService.remove(id);
+  remove(@Param() params: IdParamDto) {
+    return this.vehiclesService.remove(params.id);
   }
 }
