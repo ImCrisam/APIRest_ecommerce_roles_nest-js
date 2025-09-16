@@ -3,9 +3,11 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Product } from '../../products/entities/product.entity';
 
 @Entity()
 export class Vehicle {
@@ -33,7 +35,7 @@ export class Vehicle {
   @UpdateDateColumn()
   updatedAt: Date;
 
-//   // Relación inversa (solo tendrá sentido cuando tengamos Product)
-//   @OneToMany(() => Product, (product) => product.vehicle)
-//   products: Product[];
+  // Relación inversa (solo tendrá sentido cuando tengamos Product)
+  @OneToMany(() => Product, (product) => product.vehicle)
+  products: Product[];
 }
