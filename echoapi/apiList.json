@@ -3675,7 +3675,7 @@
       "body": {
         "mode": "json",
         "parameter": [],
-        "raw": "{\r\n  \"name\": \"{{$fakerjs.commerce.productName}}\",\r\n  \"description\": \"{{$fakerjs.commerce.productDescription}}\",\r\n  \"vehicleId\":\"\",\r\n  \"price\": {{$fakerjs.commerce.price}},\r\n  \"stock\": {{$fakerjs.Number.int(max=100000,min=1)}},\r\n  \"sku\": \"{{$fakerjs.Commerce.isbn}}\",\r\n  \"imageUrl\": \"https://picsum.photos/400/300?random={{$fakerjs.number.int(1000)}}\"\r\n}\r\n",
+        "raw": "{\r\n  \"name\": \"{{$fakerjs.commerce.productName}}\",\r\n  \"description\": \"{{$fakerjs.commerce.productDescription}}\",\r\n  \"vehicleId\":\"ac7dd28e-6a02-4134-9177-4a4d6564f13d\",\r\n  \"price\": {{$fakerjs.commerce.price}},\r\n  \"stock\": {{$fakerjs.Number.int(max=100000,min=1)}},\r\n  \"sku\": \"{{$fakerjs.Commerce.isbn}}\",\r\n  \"imageUrl\": \"https://picsum.photos/400/300?random={{$fakerjs.number.int(1000)}}\"\r\n}\r\n",
         "raw_parameter": [],
         "raw_schema": {
           "type": "object"

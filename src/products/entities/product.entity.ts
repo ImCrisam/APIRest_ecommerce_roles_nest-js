@@ -3,6 +3,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -43,8 +44,12 @@ export class Product {
 
   @ManyToOne(() => Vehicle, (vehicle) => vehicle.products, {
     onDelete: 'CASCADE',
+    nullable: true,
   })
-  vehicle: Vehicle;
+  @JoinColumn({ name: 'vehicleId' })
+  vehicle?: Vehicle;
+  
+  vehicleId?: string;
 
   @ApiProperty({ example: '2025-09-15T18:10:24.905Z' })
   @CreateDateColumn()

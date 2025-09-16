@@ -16,15 +16,22 @@ export class ProductsService {
   ) {}
 
   async create(dto: CreateProductDto): Promise<Product> {
-    // if (dto.vehicleId) {
-    //   const vehicle = await this.VehiclesRepo.findOne({
-    //     where: { id: dto.vehicleId },
-    //   });
-    //   if (!vehicle)
-    //     throw new NotFoundException(`Vehicle ${dto.vehicleId} not found`);
-    // }
-    const product = this.productsRepo.create(dto);
-    return this.productsRepo.save(product);
+    const product = this.productsRepo.create({
+      ...dto,
+      vehicle: dto.vehicleId ? ({ id: dto.vehicleId } as Vehicle) : undefined,
+    });
+
+    const saved = await this.productsRepo.save(product);
+    const full = await this.productsRepo.findOne({
+      where: { id: saved.id },
+      relations: ['vehicle'],
+    });
+
+    if (!full) {
+      throw new Error('Producto no encontrado después de guardar');
+    }
+
+    return full;
   }
 
   async findAll(paginationDto: PaginationDto): Promise<Product[]> {
@@ -33,9 +40,9 @@ export class ProductsService {
       skip: offset,
       take: limit,
       order: { createdAt: 'DESC' },
-      relations:{
-        vehicle:true
-      }
+      relations: {
+        vehicle: true,
+      },
     });
   }
 
