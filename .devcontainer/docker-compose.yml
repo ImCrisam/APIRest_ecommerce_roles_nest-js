@@ -5,20 +5,22 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ..:/workspaces:cached
-     
+
     command: sleep infinity
+    depends_on:
+      - nest-dev-postgres
+    network_mode: service:nest-dev-postgres
 
   nest-dev-postgres:
     image: postgres:15
     env_file:
       - ../.env
     ports:
-    - "${POSTGRES_PORT}:5432"
+      - '5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-
-  nest-dev-redis: 
+  nest-dev-redis:
     env_file:
       - ../.env
     image: redis:7

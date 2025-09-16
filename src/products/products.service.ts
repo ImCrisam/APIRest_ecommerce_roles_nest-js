@@ -12,17 +12,17 @@ export class ProductsService {
   constructor(
     @InjectRepository(Product)
     private readonly productsRepo: Repository<Product>,
-    private readonly VehiclesRepo: Repository<Vehicle>,
+    // private readonly VehiclesRepo: Repository<Vehicle>,
   ) {}
 
   async create(dto: CreateProductDto): Promise<Product> {
-    if (dto.vehicleId) {
-      const vehicle = await this.VehiclesRepo.findOne({
-        where: { id: dto.vehicleId },
-      });
-      if (!vehicle)
-        throw new NotFoundException(`Vehicle ${dto.vehicleId} not found`);
-    }
+    // if (dto.vehicleId) {
+    //   const vehicle = await this.VehiclesRepo.findOne({
+    //     where: { id: dto.vehicleId },
+    //   });
+    //   if (!vehicle)
+    //     throw new NotFoundException(`Vehicle ${dto.vehicleId} not found`);
+    // }
     const product = this.productsRepo.create(dto);
     return this.productsRepo.save(product);
   }
@@ -33,6 +33,9 @@ export class ProductsService {
       skip: offset,
       take: limit,
       order: { createdAt: 'DESC' },
+      relations:{
+        vehicle:true
+      }
     });
   }
 
