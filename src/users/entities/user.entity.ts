@@ -1,6 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Exclude } from "class-transformer";
-import { PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, Entity, BeforeInsert, BeforeUpdate } from "typeorm";
+import { PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, Entity, BeforeInsert, BeforeUpdate, OneToMany } from "typeorm";
+import { Order } from "../../orders/entities/order.entity";
 
 export enum UserRole {
   CLIENT = 'cliente',
@@ -34,6 +35,9 @@ export class User {
   @ApiProperty({ example: UserRole.CLIENT, enum: UserRole })
   @Column({ type: 'enum', enum: UserRole, default: UserRole.CLIENT })
   role: UserRole;
+
+  @OneToMany(() => Order, (order) => order.user)
+  orders: Order[];
 
   @ApiProperty({ example: '2025-09-13T21:42:24.905Z' })
   @CreateDateColumn()

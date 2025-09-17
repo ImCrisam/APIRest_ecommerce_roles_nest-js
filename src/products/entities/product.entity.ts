@@ -45,6 +45,7 @@ export class Product {
   @ManyToOne(() => Vehicle, (vehicle) => vehicle.products, {
     onDelete: 'CASCADE',
     nullable: true,
+    eager:true,
   })
   @JoinColumn({ name: 'vehicleId' })
   vehicle?: Vehicle;
